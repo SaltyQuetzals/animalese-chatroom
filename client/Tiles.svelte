@@ -1,12 +1,10 @@
 <script>
   import Tile from "./Tile.svelte";
-  import { villagerNames } from "./villagers.js";
+  import { villagers } from "../public/villagers/villagers.js";
 
-  const names = Array.from(Array(100)).map(e => {
-    const name =
-      villagerNames[Math.floor(Math.random() * villagerNames.length)];
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  });
+  const people = Array.from(Array(100)).map(
+    e => villagers[Math.floor(Math.random() * villagers.length)]
+  );
 </script>
 
 <style>
@@ -17,7 +15,7 @@
 </style>
 
 <div class="tiles">
-  {#each names as name}
-    <Tile {name} />
+  {#each people as villager}
+    <Tile name={villager.name} image={villager.file} />
   {/each}
 </div>

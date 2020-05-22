@@ -1,22 +1,27 @@
 <script>
-  export let name;
+  export let name, image;
 </script>
 
 <style>
   .tile {
-    background: #232323;
     display: inline-block;
     width: 100%;
     max-width: 300px;
     position: relative;
     margin: 0 1em 1em 0;
+    background-color: #232323;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .name {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
+    left: 0;
+    font-size: 0.8em;
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .filler {
@@ -25,7 +30,7 @@
   }
 </style>
 
-<div class="tile">
+<div class="tile" style="background-image: url(villagers/{image}.png)">
   <div class="name">{name}</div>
   <div class="filler" />
 </div>
