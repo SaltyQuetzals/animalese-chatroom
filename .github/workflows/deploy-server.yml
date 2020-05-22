@@ -1,0 +1,33 @@
+# Based on https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej
+name: Deploy server
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+    - server/**.ts
+    - docker-compose.yml
+    - Dockerfile
+
+env:
+  HEROKU_APP_NAME: passt
+
+jobs:
+  deploy-to-heroku:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Login to Heroku Container registry
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login
+      - name: Build and push to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:push -a $HEROKU_APP_NAME web
+      - name: Release
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:release -a $HEROKU_APP_NAME web

@@ -21,11 +21,13 @@
   },
   "devDependencies": {
     "@types/mocha": "^7.0.2",
-    "@types/node": "^13.11.1",
+    "@types/node": "^13.13.9",
+    "@types/socket.io": "^2.1.8",
     "gts": "^2.0.2",
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "mocha": "^7.1.2"
+    "mocha": "^7.1.2",
+    "socket.io": "^2.3.0"
   }
 }
