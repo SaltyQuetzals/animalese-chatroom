@@ -1,0 +1,7 @@
+{
+    "extension": [
+        "js"
+    ],
+    "spec": "build/test/**/*.test.js",
+    "timeout": 10000
+}
