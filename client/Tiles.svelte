@@ -1,6 +1,5 @@
 <script>
-  import Tiles from "./Tiles.svelte";
-  import ChatBar from "./ChatBar.svelte";
+  import Tile from "./Tile.svelte";
   import { villagerNames } from "./villagers.js";
 
   const names = Array.from(Array(100)).map(e => {
@@ -10,5 +9,15 @@
   });
 </script>
 
-<ChatBar />
-<Tiles />
+<style>
+  .tiles {
+    padding: 1em;
+    text-align: center;
+  }
+</style>
+
+<div class="tiles">
+  {#each names as name}
+    <Tile {name} />
+  {/each}
+</div>
