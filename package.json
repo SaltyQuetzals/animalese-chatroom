@@ -17,17 +17,28 @@
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
-    "posttest": "npm run check"
+    "posttest": "npm run check",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public"
   },
   "devDependencies": {
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.9",
     "@types/socket.io": "^2.1.8",
     "gts": "^2.0.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "svelte": "^3.0.0"
   },
   "dependencies": {
     "mocha": "^7.1.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "sirv-cli": "^0.4.4"
   }
 }
