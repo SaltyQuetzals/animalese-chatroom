@@ -58,6 +58,7 @@
       if (event.keyCode === 13) {
         event.preventDefault();
         socket.emit('playerSpeaks', {text: input.value});
+        synthesizeText(input.value);
         input.value = '';
       }
     });

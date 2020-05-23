@@ -21,7 +21,7 @@ io.on('connection', socket => {
   socket.on(SocketEvent.PLAYER_SPEAK, (data: {text: string}) => {
     const {text} = data;
     console.log(`${socket.id}: ${text}`);
-    socket.emit(SocketEvent.PLAYER_MESSAGE, {text});
+    socket.broadcast.emit(SocketEvent.PLAYER_MESSAGE, {text});
   });
   socket.on('disconnect', async () => {
     console.log(`${socket.id} has disconnected`);
