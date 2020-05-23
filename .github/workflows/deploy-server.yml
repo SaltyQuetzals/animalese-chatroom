@@ -10,7 +10,7 @@ on:
     - Dockerfile
 
 env:
-  HEROKU_APP_NAME: passt
+  HEROKU_APP_NAME: animalese-chatroom
 
 jobs:
   deploy-to-heroku:
