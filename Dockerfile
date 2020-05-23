@@ -6,6 +6,7 @@ COPY .mocharc.json /app/
 COPY .prettierrc.js /app/
 COPY server /app/server
 COPY test /app/test
+COPY public /app/public
 RUN npm install
 RUN npm run compile
 CMD ["npm", "run", "start:server"]

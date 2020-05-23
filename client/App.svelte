@@ -2,6 +2,11 @@
   import Tiles from "./Tiles.svelte";
   import Participants from "./Participants.svelte";
   import Chat from "./Chat.svelte";
+  import { synthesizeText } from "./synthesizeText.js";
+
+  let unsupported = false;
+
+  synthesizeText(".", () => (unsupported = true));
 </script>
 
 <style>
@@ -10,7 +15,7 @@
     height: 100%;
   }
 
-  .grid {
+  .main {
     flex: 1;
     overflow-y: auto;
     height: 100%;
@@ -35,10 +40,22 @@
   .participants {
     flex: 1;
   }
+
+  .error {
+    padding: 1em;
+    text-align: center;
+    background: darkred;
+  }
 </style>
 
 <div class="wrap">
-  <div class="grid">
+  <div class="main">
+    {#if unsupported}
+      <div class="error">
+        Your browser does not support features required for this site. Please
+        use Firefox or Chrome.
+      </div>
+    {/if}
     <Tiles />
   </div>
 
