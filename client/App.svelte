@@ -34,7 +34,9 @@
     source.start();
   }
 
-  synthesizeText(prompt('Please input what you would like to say.'));
+  window.addEventListener('click', () => {
+    synthesizeText(prompt('Please input what you would like to say.'));
+  });
 </script>
 
 <ChatBar />
