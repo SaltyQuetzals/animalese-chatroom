@@ -4,16 +4,7 @@
   import io from 'socket.io-client';
   import {villagerNames} from './villagers.js';
   import {AlphabetLoader} from './alphabetLoader.js';
-  import {AnimaleseSynthesizer} from './animaleseSynthesizer.js';
   import {onMount} from 'svelte';
-
-  const names = Array.from(Array(100)).map(e => {
-    const name =
-      villagerNames[Math.floor(Math.random() * villagerNames.length)];
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  });
-
-  // alert(window.location.pathname);
 
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   async function synthesizeText(text) {
