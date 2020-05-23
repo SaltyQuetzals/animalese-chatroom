@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import {writable} from 'svelte/store';
 
-export const playerCount = writable(0);
+export const connections = writable([]);
 
 // http://localhost:3000
 export const socket = io.connect('http://animalese-chatroom.herokuapp.com:80');
@@ -15,12 +15,8 @@ socket.on('playerMessage', function (data) {
   synthesizeText(text);
 });
 
-socket.on('playerConnected', function (data) {
-  const {socketId, nClients, name, file} = data;
-  playerCount.set(nClients);
-});
-
-socket.on('playerDisconnected', function (data) {
-  const {socketId, nClients, name} = data;
-  playerCount.set(nClients);
+['playerConnected', 'playerDisconnected'].forEach(eventName => {
+  socket.on(eventName, function (data) {
+    connections.set(Object.values(data.connections));
+  });
 });

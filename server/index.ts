@@ -414,7 +414,7 @@ enum SocketEvent {
 io.on('connection', socket => {
   clientCount++;
   const villager = villagers[Math.floor(Math.random() * villagers.length)];
-  connections[socket.id] = villager;
+  connections[socket.id] = {socketId: socket.id, ...villager};
   console.log(`${villager.name} (${socket.id}) has connected!`);
   io.emit(SocketEvent.PLAYER_CONNECTED, {
     socketId: socket.id,
