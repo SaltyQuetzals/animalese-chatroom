@@ -1,6 +1,7 @@
 <script>
-  import Tiles from './Tiles.svelte';
-  import ChatBar from './ChatBar.svelte';
+
+  import Tiles from "./Tiles.svelte";
+  import ChatBar from "./ChatBar.svelte";
   import io from 'socket.io-client';
   import {villagerNames} from './villagers.js';
   import {AlphabetLoader} from './alphabetLoader.js';
@@ -75,6 +76,7 @@
       }
     });
   })
+
 </script>
 
 <ChatBar />
