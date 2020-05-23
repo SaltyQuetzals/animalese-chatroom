@@ -400,7 +400,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const server = new http.Server(app);
 let clientCount = 0;
-let idMap = new Map();
+const idMap = new Map();
 
 const io = socketIO(server, {pingInterval: 5000, pingTimeout: 1000});
 
@@ -413,19 +413,28 @@ enum SocketEvent {
 
 io.on('connection', socket => {
   clientCount++;
-  let villager = villagers[Math.floor(Math.random()*villagers.length)]
-  idMap[socket.id] = villager
+  const villager = villagers[Math.floor(Math.random() * villagers.length)]
+  idMap[socket.id] = villager;
   console.log(`${villager.name} (${socket.id}) has connected!`);
-  io.emit(SocketEvent.PLAYER_CONNECTED, {socketId: socket.id, nClients: clientCount, name: villager.name, file: villager.file});
+  io.emit(SocketEvent.PLAYER_CONNECTED, {
+    socketId: socket.id,
+    nClients: clientCount,
+    name: villager.name,
+    file: villager.file});
   socket.on(SocketEvent.PLAYER_SPEAK, (data: {text: string}) => {
     const {text} = data;
     console.log(`${villager.name}: ${text}`);
-    socket.broadcast.emit(SocketEvent.PLAYER_MESSAGE, {text: text, name: villager.name});
+    socket.broadcast.emit(SocketEvent.PLAYER_MESSAGE, {
+      text: text,
+      name: villager.name});
   });
   socket.on('disconnect', async () => {
     clientCount--;
     console.log(`${villager.name} (${socket.id}) has disconnected`);
-    io.emit(SocketEvent.PLAYER_DISCONNECTED, {socketId: socket.id, nClients: clientCount, name: villager.name});
+    io.emit(SocketEvent.PLAYER_DISCONNECTED, {
+      socketId: socket.id,
+      nClients: clientCount,
+      name: villager.name});
   });
 });
 
