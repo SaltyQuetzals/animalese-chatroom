@@ -1,3 +1,19 @@
+<script>
+  import { socket } from "./socket.js";
+  import { synthesizeText } from "./synthesizeText.js";
+
+  let text = "";
+
+  function keydown(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      socket.emit("playerSpeaks", { text: text });
+      synthesizeText(text);
+      text = "";
+    }
+  }
+</script>
+
 <style>
   .bar {
     position: fixed;
@@ -56,5 +72,9 @@
 
 <div class="bar">
   <div class="spacer" />
-  <input type="text" placeholder="Type something" id="chatText"/>
+  <input
+    type="text"
+    placeholder="Type something"
+    bind:value={text}
+    on:keydown={keydown} />
 </div>
