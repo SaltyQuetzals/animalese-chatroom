@@ -10,3 +10,13 @@ socket.on('playerMessage', function (data) {
   const {text} = data;
   synthesizeText(text);
 });
+
+socket.on('playerConnected', function(data){
+  const {socketId, nClients} = data;
+  // TODO: Add change in user count functionality
+});
+
+socket.on('playerDisconnected', function(data){
+  const {socketId, nClients} = data;
+  // TODO: Add change in user count functionality
+});
