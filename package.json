@@ -20,6 +20,7 @@
     "posttest": "npm run check",
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "start": "sirv public",
     "start:client": "sirv public",
     "start:server": "node build/server/index.js"
   },
@@ -35,6 +36,7 @@
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
+    "socket.io-client": "^2.3.0",
     "svelte": "^3.0.0",
     "typescript": "^3.8.3"
   },

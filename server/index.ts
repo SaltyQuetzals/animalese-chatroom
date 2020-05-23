@@ -20,6 +20,7 @@ io.on('connection', socket => {
   io.emit(SocketEvent.PLAYER_CONNECTED, {socketId: socket.id});
   socket.on(SocketEvent.PLAYER_SPEAK, (data: {text: string}) => {
     const {text} = data;
+    console.log(`${socket.id}: ${text}`);
     socket.emit(SocketEvent.PLAYER_MESSAGE, {text});
   });
   socket.on('disconnect', async () => {

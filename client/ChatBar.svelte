@@ -56,5 +56,5 @@
 
 <div class="bar">
   <div class="spacer" />
-  <input type="text" placeholder="Type something" />
+  <input type="text" placeholder="Type something" id="chatText"/>
 </div>

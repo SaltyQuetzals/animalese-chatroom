@@ -1,9 +1,11 @@
 <script>
   import Tiles from './Tiles.svelte';
   import ChatBar from './ChatBar.svelte';
+  import io from 'socket.io-client';
   import {villagerNames} from './villagers.js';
   import {AlphabetLoader} from './alphabetLoader.js';
   import {AnimaleseSynthesizer} from './animaleseSynthesizer.js';
+  import {onMount} from 'svelte';  
 
   const names = Array.from(Array(100)).map(e => {
     const name =
@@ -34,9 +36,32 @@
     source.start();
   }
 
-  window.addEventListener('click', () => {
-    synthesizeText(prompt('Please input what you would like to say.'));
+  // ----------- Server Stuff -----------
+
+  const socket = io.connect('http://localhost:3000');
+
+  socket.on('connect', function(){
+    console.log('[open] Connection established');
   });
+
+  socket.on('playerMessage', function(data){
+    const {text} = data
+    synthesizeText(text);
+  });
+
+  // ----------- Chat Stuff -----------
+
+  onMount(() => {
+    var input = document.getElementById('chatText');
+
+    input.addEventListener('keydown', function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        socket.emit('playerSpeaks', {text: input.value});
+        input.value = '';
+      }
+    });
+  })
 </script>
 
 <ChatBar />
