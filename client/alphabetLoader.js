@@ -107,7 +107,7 @@ export class AlphabetLoader {
       for (let i = 0; i < charFrameCount; ++i) {
         channelBuffer[i] =
           wavChannelArrayBuffer[
-          INITIAL_OFFSET + startOffset + Math.floor(i * pitch)
+            INITIAL_OFFSET + startOffset + Math.floor(i * pitch)
           ];
       }
     }

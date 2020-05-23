@@ -1,10 +1,12 @@
 import socketIO from 'socket.io';
 import express from 'express';
+import http from 'http';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+const server = new http.Server(app);
 
-const io = socketIO(app, {pingInterval: 5000, pingTimeout: 1000});
+const io = socketIO(server, {pingInterval: 5000, pingTimeout: 1000});
 
 enum SocketEvent {
   PLAYER_SPEAK = 'playerSpeaks',
@@ -26,7 +28,6 @@ io.on('connection', socket => {
   });
 });
 
-
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
