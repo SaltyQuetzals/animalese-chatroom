@@ -5,7 +5,7 @@
   import {villagerNames} from './villagers.js';
   import {AlphabetLoader} from './alphabetLoader.js';
   import {AnimaleseSynthesizer} from './animaleseSynthesizer.js';
-  import {onMount} from 'svelte';  
+  import {onMount} from 'svelte';
 
   const names = Array.from(Array(100)).map(e => {
     const name =
@@ -38,7 +38,7 @@
 
   // ----------- Server Stuff -----------
 
-  const socket = io.connect('http://localhost:3000');
+  const socket = io.connect('http://animalese-chatroom.herokuapp.com:80');
 
   socket.on('connect', function(){
     console.log('[open] Connection established');
