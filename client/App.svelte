@@ -13,7 +13,7 @@
     return name.charAt(0).toUpperCase() + name.slice(1);
   });
 
-  // alert(window.location.pathname);
+  // alert(document.getElementsByTagName("script")[0].src);
 
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   async function synthesizeText(text) {
@@ -49,6 +49,16 @@
   socket.on('playerMessage', function(data){
     const {text} = data
     synthesizeText(text);
+  });
+
+  socket.on('playerConnected', function(data){
+    const {socketId, nClients} = data;
+    // TODO: Add change in user count functionality
+  });
+
+  socket.on('playerDisconnected', function(data){
+    const {socketId, nClients} = data;
+    // TODO: Add change in user count functionality
   });
 
   // ----------- Chat Stuff -----------
