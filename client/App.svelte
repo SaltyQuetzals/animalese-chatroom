@@ -1,12 +1,12 @@
 <script>
-  import Tiles from "./Tiles.svelte";
-  import Participants from "./Participants.svelte";
-  import Chat from "./Chat.svelte";
-  import { synthesizeText } from "./synthesizeText.js";
+  import Tiles from './Tiles.svelte';
+  import Participants from './Participants.svelte';
+  import Chat from './Chat.svelte';
+  import {synthesizeText} from './synthesizeText.js';
 
   let unsupported = false;
 
-  synthesizeText(".", () => (unsupported = true));
+  synthesizeText('.', 1.0, () => (unsupported = true));
 </script>
 
 <style>
