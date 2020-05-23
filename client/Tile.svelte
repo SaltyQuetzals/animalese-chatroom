@@ -1,5 +1,5 @@
 <script>
-  export let name, image;
+  export let name, image, speaking;
 </script>
 
 <style>
@@ -28,9 +28,16 @@
     height: 0;
     padding-top: 56.25%;
   }
+
+  .speaking {
+    outline: 2px solid yellow;
+  }
 </style>
 
-<div class="tile" style="background-image: url(villagers/{image}.png)">
+<div
+  class="tile"
+  style="background-image: url(villagers/{image}.png)"
+  class:speaking>
   <div class="name">{name}</div>
   <div class="filler" />
 </div>

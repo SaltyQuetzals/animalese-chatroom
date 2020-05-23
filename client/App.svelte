@@ -31,6 +31,7 @@
 
   .sidebar > div {
     padding: 1em;
+    overflow: auto;
   }
 
   .sidebar > div + div {

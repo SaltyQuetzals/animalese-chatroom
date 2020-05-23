@@ -425,7 +425,7 @@ io.on('connection', socket => {
   socket.on(SocketEvent.PLAYER_SPEAK, (data: {text: string}) => {
     const {text} = data;
     console.log(`${villager.name}: ${text}`);
-    socket.broadcast.emit(SocketEvent.PLAYER_MESSAGE, {
+    io.sockets.emit(SocketEvent.PLAYER_MESSAGE, {
       text: text,
       socketId: socket.id,
     });

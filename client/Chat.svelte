@@ -1,15 +1,13 @@
 <script>
-  import { socket } from "./socket.js";
-  import { synthesizeText } from "./synthesizeText.js";
+  import {socket} from './socket.js';
 
-  let text = "";
+  let text = '';
 
   function keydown(e) {
     if (e.keyCode === 13) {
       e.preventDefault();
-      socket.emit("playerSpeaks", { text: text });
-      synthesizeText(text);
-      text = "";
+      socket.emit('playerSpeaks', {text: text});
+      text = '';
     }
   }
 </script>

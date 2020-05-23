@@ -3,8 +3,7 @@ import {AnimaleseSynthesizer} from './animaleseSynthesizer.js';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 
-export async function synthesizeText(text, error) {
-  //animalese.wav
+export async function synthesizeText(text, error, onend) {
   const wavPath = './animalese.wav';
   const wavSecondsPerLetter = 0.15;
   const outputSecondsPerLetter = 0.075;
@@ -24,4 +23,5 @@ export async function synthesizeText(text, error) {
   source.buffer = animalese;
   source.connect(audioContext.destination);
   source.start();
+  return source;
 }

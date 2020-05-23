@@ -19,10 +19,7 @@
   .entry > div {
     flex: 1;
     margin-left: 0.5em;
-  }
-
-  .participants {
-    overflow: auto;
+    width: 100%;
   }
 </style>
 
@@ -32,7 +29,7 @@
   {#each $connections as villager}
     <div class="entry">
       <img
-        src="villagers/{villager.name}.png"
+        src="villagers/{villager.file}.png"
         alt="Picture of {villager.name}" />
       <div>{villager.name}</div>
     </div>
