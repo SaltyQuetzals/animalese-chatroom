@@ -33,4 +33,5 @@ To: Everyone
   type="text"
   placeholder="Type message here..."
   bind:value={text}
-  on:keydown={keydown} />
+  on:keydown={keydown}
+  autofocus />

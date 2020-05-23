@@ -1,5 +1,5 @@
 <script>
-  import { connections } from "./socket.js";
+  import {connections} from './socket.js';
 </script>
 
 <style>
