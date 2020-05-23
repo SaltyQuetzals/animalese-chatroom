@@ -5,6 +5,7 @@ import http from 'http';
 const PORT = process.env.PORT || 3000;
 const app = express();
 const server = new http.Server(app);
+let clientCount = 0;
 
 const io = socketIO(server, {pingInterval: 5000, pingTimeout: 1000});
 

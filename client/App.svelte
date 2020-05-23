@@ -13,6 +13,8 @@
     return name.charAt(0).toUpperCase() + name.slice(1);
   });
 
+  // alert(window.location.pathname);
+
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   async function synthesizeText(text) {
     const wavPath = 'animalese.wav';
