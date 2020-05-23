@@ -4,7 +4,8 @@ import {AnimaleseSynthesizer} from './animaleseSynthesizer.js';
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 
 export async function synthesizeText(text, error) {
-  const wavPath = 'animalese.wav';
+  //animalese.wav
+  const wavPath = 'https://srv-file16.gofile.io/download/vF0fxF/animalese.wav';
   const wavSecondsPerLetter = 0.15;
   const outputSecondsPerLetter = 0.075;
   /** @type {AudioContext} */
